@@ -193,7 +193,7 @@ function InstallDotNetSdk {
 
   local install_script=`GetDotNetInstallScript $root`
 
-  bash "$install_script" --version $version
+  bash "$install_script" --version $version --install-dir $root
   local lastexitcode=$?
 
   if [[ $lastexitcode != 0 ]]; then
@@ -282,7 +282,7 @@ function InstallDotNetSharedFramework {
   if [[ ! -d "$fx_dir" ]]; then
     local install_script=`GetDotNetInstallScript $dotnet_root`
     
-    bash "$install_script" -Version $version -InstallDir $dotnet_root -Channel "Preview" -SharedRuntime
+    bash "$install_script" --version $version --install-dir $dotnet_root --shared-runtime
     if [[ $lastexitcode != 0 ]]; then
       echo "Failed to install Shared Framework $version to '$dotnet_root' (exit code '$lastexitcode')."
       ExitWithExitCode $lastexitcode
