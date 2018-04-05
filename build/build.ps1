@@ -156,7 +156,7 @@ function InitializeCustomToolset {
     $env:SDK_CLI_VERSION = $DotNetCliVersion
     $env:MSBuildSDKsPath = Join-Path $ArtifactsConfigurationDir "bin\Sdks"
     $env:DOTNET_MSBUILD_SDK_RESOLVER_SDKS_DIR = $env:MSBuildSDKsPath
-    $env:NETCoreSdkBundledVersionsProps = Join-Path $dotnetRoot "sdk\$DotNetCliVersion\Microsoft.NETCoreSdk.BundledVersions.props"
+    $env:NETCoreSdkBundledVersionsProps = Join-Path $env:DOTNET_INSTALL_DIR "sdk\$DotNetCliVersion\Microsoft.NETCoreSdk.BundledVersions.props"
     $env:MicrosoftNETBuildExtensionsTargets = Join-Path $env:MSBuildSDKsPath "Microsoft.NET.Build.Extensions\msbuildExtensions\Microsoft\Microsoft.NET.Build.Extensions\Microsoft.NET.Build.Extensions.targets"
  
     if ($properties -eq $null -and $env:DOTNET_SDK_DOGFOOD_SHELL -ne $null)
