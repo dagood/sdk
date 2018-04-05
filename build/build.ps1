@@ -133,7 +133,7 @@ function InstallDotNetSharedFramework([string]$dotnetRoot, [string]$version) {
 
   if (!(Test-Path $fxDir)) {
     $installScript = GetDotNetInstallScript $dotnetRoot
-    & $installScript -Version $version -SharedRuntime
+    & $installScript -Version $version -InstallDir $dotnetRoot -SharedRuntime
 
     if($lastExitCode -ne 0) {
       throw "Failed to install shared Framework $version to '$dotnetRoot' (exit code '$lastExitCode')."
