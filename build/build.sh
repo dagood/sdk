@@ -283,6 +283,8 @@ function InstallDotNetSharedFramework {
     local install_script=`GetDotNetInstallScript $dotnet_root`
     
     bash "$install_script" --version $version --install-dir $dotnet_root --shared-runtime
+    local lastexitcode=$?
+    
     if [[ $lastexitcode != 0 ]]; then
       echo "Failed to install Shared Framework $version to '$dotnet_root' (exit code '$lastexitcode')."
       ExitWithExitCode $lastexitcode
