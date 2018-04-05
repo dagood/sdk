@@ -266,7 +266,13 @@ function InitializeCustomToolset {
 
   if [[ "$restore" != true ]]; then
     return
-  fi  
+  fi
+
+  # The following frameworks and tools are used only for testing.
+  # Do not attempt to install them in source build.
+  if [[ "$DotNetBuildFromSource" == "true" ]]; then
+    return
+  fi
   
   InstallDotNetSharedFramework $DOTNET_INSTALL_DIR "1.0.5"
   InstallDotNetSharedFramework $DOTNET_INSTALL_DIR "1.1.2"
