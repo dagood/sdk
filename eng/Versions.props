@@ -92,6 +92,7 @@
     <MicrosoftBuildVersion>$(MicrosoftBuildPackageVersion)</MicrosoftBuildVersion>
     <MicrosoftBuildFrameworkVersion>$(MicrosoftBuildFrameworkPackageVersion)</MicrosoftBuildFrameworkVersion>
     <MicrosoftBuildUtilitiesCoreVersion>$(MicrosoftBuildUtilitiesCorePackageVersion)</MicrosoftBuildUtilitiesCoreVersion>
+    <FSharpBuildVersion>$(MicrosoftBuildPackageVersion)</FSharpBuildVersion>
   </PropertyGroup>
   <PropertyGroup>
     <!-- Dependencies from https://github.com/dotnet/CliCommandLineParser -->
