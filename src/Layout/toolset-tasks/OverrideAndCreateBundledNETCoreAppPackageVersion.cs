@@ -58,18 +58,6 @@ namespace Microsoft.DotNet.Build.Tasks
                 propertyGroup.Element(ns + "BundledNETCoreAppPackageVersion").Value;
             propertyGroup.Element(ns + "BundledNETCoreAppPackageVersion").Value = microsoftNETCoreAppRefPackageVersion;
 
-            void CheckAndReplaceElement(XElement element)
-            {
-                if (element.Value != originalBundledNETCoreAppPackageVersion)
-                {
-                    throw new ApplicationException(string.Format(
-                        _messageWhenMismatch,
-                        element.ToString(), element.Value, originalBundledNETCoreAppPackageVersion));
-                }
-
-                element.Value = microsoftNETCoreAppRefPackageVersion;
-            }
-
             void CheckAndReplaceAttribute(XAttribute attribute)
             {
                 if (attribute.Value != originalBundledNETCoreAppPackageVersion)
@@ -83,16 +71,10 @@ namespace Microsoft.DotNet.Build.Tasks
                 attribute.Value = microsoftNETCoreAppRefPackageVersion;
             }
 
-            CheckAndReplaceElement(propertyGroup.Element(ns + "BundledNETCorePlatformsPackageVersion"));
-
             var itemGroup = projectXml.Root.Elements(ns + "ItemGroup").First();
 
             CheckAndReplaceAttribute(itemGroup
-                .Elements(ns + "KnownFrameworkReference").First().Attribute("DefaultRuntimeFrameworkVersion"));
-            CheckAndReplaceAttribute(itemGroup
                 .Elements(ns + "KnownFrameworkReference").First().Attribute("LatestRuntimeFrameworkVersion"));
-            CheckAndReplaceAttribute(itemGroup
-                .Elements(ns + "KnownFrameworkReference").First().Attribute("TargetingPackVersion"));
             CheckAndReplaceAttribute(itemGroup
                 .Elements(ns + "KnownAppHostPack").First().Attribute("AppHostPackVersion"));
             CheckAndReplaceAttribute(itemGroup
