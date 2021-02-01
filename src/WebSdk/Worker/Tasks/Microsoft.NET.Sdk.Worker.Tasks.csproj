@@ -25,6 +25,11 @@
     </Content>
   </ItemGroup>
 
+  <Target Name="DelayToSimulateAsync"
+          BeforeTargets="CopyAdditionalFilesToLayout">
+    <Exec Command="sleep 150" />
+  </Target>
+
   <Import Project="$(RepoRoot)\src\WebSdk\CopyPackageLayout.targets" />
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
